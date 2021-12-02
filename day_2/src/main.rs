@@ -1,4 +1,3 @@
-use itertools::Itertools;
 use std::fs;
 
 struct Position{
@@ -45,9 +44,9 @@ fn part_1(){
     let filehandle = fs::read_to_string(filename).expect("file not found");
     let mut pos = Position::new();
     for line in filehandle.lines(){
-        let split = line.split(" ").collect_vec();
-        let step: i32 = split[1].parse::<i32>().ok().unwrap();
-        pos.parse_action_part_1(split[0], step);
+        let (action, step) = line.split_once(" ").unwrap();
+        let step: i32 = step.parse::<i32>().ok().unwrap();
+        pos.parse_action_part_1(action, step);
     }
     println!("part 1 - {}", pos.answer())
 
@@ -59,9 +58,9 @@ fn part_2() {
     let filehandle = fs::read_to_string(filename).expect("file not found");
     let mut pos = Position::new();
     for line in filehandle.lines() {
-        let split = line.split(" ").collect_vec();
-        let step: i32 = split[1].parse::<i32>().ok().unwrap();
-        pos.parse_action_part_2(split[0], step)
+        let (action, step) = line.split_once(" ").unwrap();
+        let step: i32 = step.parse::<i32>().ok().unwrap();
+        pos.parse_action_part_2(action, step)
     }
     println!("part 2 - {}", pos.answer())
 }
