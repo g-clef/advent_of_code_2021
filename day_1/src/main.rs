@@ -17,7 +17,7 @@ fn part_1() {
                             .iter()
                             // make a 2-entry sliding window over that iterator
                             .tuple_windows()
-                            // compare the entries, keeping only the ones where the second value is bigger than the first
+                            // compare the entries in the window, keeping only the ones where the second value is bigger than the first
                             .filter(|(a,b)| b > a)
                             // count the # that passed the filter.
                             .count();
